@@ -1,0 +1,26 @@
+name: Deployment
+run-name: aaa
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        type: string
+        description: 'Tag'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Doing build steps..."
+
+  deploy-to-stage:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: stage # This triggers the manual approval pause
+    steps:
+      - run: echo "Deploying to stage..."
