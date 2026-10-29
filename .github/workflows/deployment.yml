@@ -13,14 +13,22 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  deploy-qa:
     runs-on: ubuntu-latest
+    environment: qa
     steps:
-      - run: echo "Doing build steps..."
+      - run: echo "Deploying to qa ..."
 
-  deploy-to-stage:
-    needs: build
+  deploy-stage:
+    needs: deploy-qa
     runs-on: ubuntu-latest
-    environment: stage # This triggers the manual approval pause
+    environment: stage
     steps:
-      - run: echo "Deploying to stage..."
+      - run: echo "Deploying to stage ..."
+
+  deploy-prod:
+    needs: deploy-stage
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - run: echo "Deploying to prod ..."
