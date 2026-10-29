@@ -1,5 +1,5 @@
 name: Deployment
-run-name: aaa
+run-name: 'Deployment: ${{ inputs.tag }}'
 
 on:
   workflow_dispatch:
