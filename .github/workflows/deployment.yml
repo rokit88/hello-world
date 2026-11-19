@@ -17,7 +17,6 @@ jobs:
     uses: ./.github/workflows/something.yml
     with:
       tag: ${{ inputs.tag }}
-      environment: "qa"
 
   deploy-qa:
     name: 'Deploy to qa'
