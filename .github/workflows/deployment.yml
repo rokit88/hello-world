@@ -14,12 +14,13 @@ permissions:
 
 jobs:
   deploy-tag-qa:
+    name: 'Deploying to qa'
     uses: ./.github/workflows/something.yml
     with:
       tag: "qa"
 
   deploy-qa:
-    name: 'QA'
+    name: 'qa'
     runs-on: ubuntu-latest
     environment: qa
     steps:
@@ -34,6 +35,7 @@ jobs:
       - run: echo "Stage pending approval ..."
       
   deploy-tag-stage:
+    name: 'Deploy to stage'
     needs: deploy-stage
     uses: ./.github/workflows/something.yml
     with:
@@ -48,6 +50,7 @@ jobs:
       - run: echo "Prod pending approval ..."
 
   deploy-tag-prod:
+    name: 'Deploy to prod'
     needs: deploy-prod
     uses: ./.github/workflows/something.yml
     with:
