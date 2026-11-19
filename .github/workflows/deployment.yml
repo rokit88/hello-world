@@ -26,7 +26,7 @@ jobs:
       - run: echo "Begin deployment ..."
 
   deploy-stage:
-    name: 'STAGE approval'
+    name: 'STAGE pending'
     needs: [deploy-qa]
     runs-on: ubuntu-latest
     environment: stage
@@ -40,12 +40,12 @@ jobs:
       tag: "stage"
       
   deploy-prod:
-    name: 'PROD approval'
+    name: 'PROD pending'
     needs: [deploy-tag-stage]
     runs-on: ubuntu-latest
     environment: prod
     steps:
-      - run: echo "Verifying prod ..."
+      - run: echo "Prod pending approval ..."
 
   deploy-tag-prod:
     needs: deploy-prod
