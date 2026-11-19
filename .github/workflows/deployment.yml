@@ -16,7 +16,7 @@ jobs:
   deploy-tag-qa:
     uses: ./.github/workflows/something.yml
     with:
-      tag: ${{ inputs.tag }}
+      tag: "qa"
 
   deploy-qa:
     name: 'QA'
@@ -29,7 +29,7 @@ jobs:
     needs: deploy-qa
     uses: ./.github/workflows/something.yml
     with:
-      tag: ${{ inputs.tag }}
+      tag: "stage"
 
   deploy-stage:
     name: 'STAGE'
@@ -43,7 +43,7 @@ jobs:
     needs: deploy-stage
     uses: ./.github/workflows/something.yml
     with:
-      tag: ${{ inputs.tag }}
+      tag: "prod"
       
   deploy-prod:
     name: 'PROD'
