@@ -19,8 +19,7 @@ permissions:
   contents: write
 
 jobs:
-  punch:
-    name: Puncher
+  deploy:
     runs-on: ubuntu-latest
     steps: 
       - name: Thing
