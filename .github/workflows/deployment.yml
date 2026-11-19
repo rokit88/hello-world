@@ -19,6 +19,10 @@ jobs:
     environment: qa
     steps:
       - run: echo "Deploying to qa ..."
+      - name: Run Something
+        uses: ./.github/actions/something
+        with:
+          tag: ${{ inputs.tag }}
 
   deploy-stage:
     name: 'Deploy to stage'
