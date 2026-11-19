@@ -19,6 +19,7 @@ jobs:
     environment: qa
     steps:
       - run: echo "Deploying to qa ..."
+      - uses: actions/checkout@v6
       - name: Run Something
         uses: ./.github/actions/something
         with:
