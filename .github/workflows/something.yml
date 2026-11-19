@@ -1,12 +1,12 @@
 name: Something
-run-name: 'Something: ${{ inputs.environment }}'
+run-name: 'Something: ${{ inputs.tag }}'
 
 on:
   workflow_dispatch:
     inputs:
-      environment:
+      tag:
         type: string
-        description: 'Environment'
+        description: 'Tag'
         required: true
 
 permissions:
@@ -18,4 +18,4 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Thing
-        run: echo "Deploying to ${{ inputs.environment }}..."
+        run: echo "Deploying to ${{ inputs.tag }}..."
