@@ -26,8 +26,8 @@ jobs:
       - run: echo "Begin deployment ..."
 
   deploy-stage:
-    name: 'STAGE'
-    needs: [deploy-tag-qa, deploy-qa]
+    name: 'STAGE approval'
+    needs: [deploy-qa]
     runs-on: ubuntu-latest
     environment: stage
     steps:
@@ -40,8 +40,8 @@ jobs:
       tag: "stage"
       
   deploy-prod:
-    name: 'PROD'
-    needs: [deploy-tag-stage, deploy-stage]
+    name: 'PROD approval'
+    needs: [deploy-tag-stage]
     runs-on: ubuntu-latest
     environment: prod
     steps:
