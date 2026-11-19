@@ -18,6 +18,4 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Thing
-        env:
-          environment: '${{ inputs.environment }}'
-        run: echo "Deploying to ${environment} ..."
+        run: echo "Deploying to ${{ inputs.environment }}..."
