@@ -1,4 +1,4 @@
-name: Deployment
+name: Something
 run-name: 'Something: ${{ inputs.environment }}'
 
 on:
