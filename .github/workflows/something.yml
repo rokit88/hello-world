@@ -8,6 +8,12 @@ on:
         type: string
         description: 'Tag'
         required: true
+  workflow_call:
+    inputs:
+      tag:
+        type: string
+        description: 'Tag'
+        required: true
 
 permissions:
   contents: write
