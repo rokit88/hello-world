@@ -20,6 +20,7 @@ jobs:
 
   deploy-qa:
     name: 'QA'
+    needs: deploy-tag-qa
     runs-on: ubuntu-latest
     environment: qa
     steps:
@@ -41,7 +42,7 @@ jobs:
       
   deploy-prod:
     name: 'PROD'
-    needs: deploy-stage
+    needs: [deploy-stage, deploy-tag-stage]
     runs-on: ubuntu-latest
     environment: prod
     steps:
