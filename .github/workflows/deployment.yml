@@ -23,15 +23,15 @@ jobs:
     runs-on: ubuntu-latest
     environment: qa
     steps:
-      - run: echo "Verifying qa ..."
+      - run: echo "Begin deployment ..."
 
   deploy-stage:
     name: 'STAGE'
-    needs: deploy-qa
+    needs: [deploy-tag-qa, deploy-qa]
     runs-on: ubuntu-latest
     environment: stage
     steps:
-      - run: echo "Verifying stage ..."
+      - run: echo "Stage pending approval ..."
       
   deploy-tag-stage:
     needs: deploy-stage
@@ -41,7 +41,7 @@ jobs:
       
   deploy-prod:
     name: 'PROD'
-    needs: [deploy-stage, deploy-tag-stage]
+    needs: [deploy-tag-stage, deploy-stage]
     runs-on: ubuntu-latest
     environment: prod
     steps:
