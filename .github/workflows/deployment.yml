@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   deploy-tag-qa:
-    name: 'Deploying to qa'
+    name: 'Deploy to qa'
     uses: ./.github/workflows/something.yml
     with:
       tag: "qa"
