@@ -24,6 +24,12 @@ jobs:
     environment: qa
     steps:
       - run: echo "Verifying qa ..."
+      
+  deploy-tag-stage:
+    needs: deploy-qa
+    uses: ./.github/workflows/something.yml
+    with:
+      tag: ${{ inputs.tag }}
 
   deploy-stage:
     name: 'STAGE'
@@ -31,12 +37,18 @@ jobs:
     runs-on: ubuntu-latest
     environment: stage
     steps:
-      - run: echo "Deploying to stage ..."
-
+      - run: echo "Verifying stage ..."
+      
+  deploy-tag-prod:
+    needs: deploy-stage
+    uses: ./.github/workflows/something.yml
+    with:
+      tag: ${{ inputs.tag }}
+      
   deploy-prod:
     name: 'PROD'
     needs: deploy-stage
     runs-on: ubuntu-latest
     environment: prod
     steps:
-      - run: echo "Deploying to prod ..."
+      - run: echo "Verifying prod ..."
