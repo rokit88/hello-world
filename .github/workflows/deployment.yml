@@ -20,14 +20,14 @@ jobs:
       tag: "qa"
 
   deploy-qa:
-    name: 'Environment: qa'
+    name: 'QA review'
     runs-on: ubuntu-latest
     environment: qa
     steps:
       - run: echo "Begin deployment ..."
 
   deploy-stage:
-    name: 'Environment: stage'
+    name: 'Stage review'
     needs: [deploy-qa]
     runs-on: ubuntu-latest
     environment: stage
@@ -42,7 +42,7 @@ jobs:
       tag: "stage"
       
   deploy-prod:
-    name: 'Environment: prod'
+    name: 'Prod review'
     needs: [deploy-tag-stage]
     runs-on: ubuntu-latest
     environment: prod
