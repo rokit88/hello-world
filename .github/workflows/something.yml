@@ -1,0 +1,23 @@
+name: Deployment
+run-name: 'Something: ${{ inputs.environment }}'
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: string
+        description: 'Environment'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  punch:
+    name: Puncher
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Thing
+        env:
+          environment: '${{ inputs.env }}'
+        run: echo "Deploying to qa ..."
